@@ -1,0 +1,11 @@
+.card-content{
+  border: black 1px solid;
+  padding: 10px;
+  height: 999px;
+}
+@media generatePDFALL {
+ button{
+    display: none;
+
+  }
+}

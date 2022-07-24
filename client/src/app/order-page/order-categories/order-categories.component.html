@@ -1,0 +1,211 @@
+<form class="col s12 l6"
+      id="filter">
+  <input type="text" name="searchTern" [(ngModel)]="tern">
+  <label>Filter for surname or phone</label>
+</form>
+<br>
+<br>
+<div *ngIf="categories$ | async as categories; else loader">
+  <div class="frow order-row" *ngIf="categories.length !== 0;else empty">
+    <div
+      *ngFor="let category of categories.reverse()| filter:tern; let i = index"
+      class=" pointer"
+    >
+      <div>
+        <div
+          [id]="'print-section'+i"
+          class="card-content p12">
+          <!--        1     -->
+          <h6>форма П-2ч</h6>
+          <br>
+          <p>1. Інститут {{category.institute}}</p>
+          <p>2. {{category.surname}} {{category.name}} {{category.surnames}}</p>
+          <p>3. {{category.birthday}}</p>
+          <p>4. {{category.homeAddress}}</p>
+          <p>5. Освіта {{category.zaklad}}</p>
+          <p>6. Ім'я, по батькові і рік народження:</p>
+          <p>&emsp;Дружина:{{category.wifeInfo}}</p>
+          <p>&emsp;Батька: {{category.fatherInfo}}</p>
+          <p>&emsp;Матері: {{category.matherInfo}}</p>
+          <p>7. Місце проживання батьків (адреса):</p>
+          <p>&emsp;{{category.addressParents}}</p>
+          <p>8. Паспорт серія: {{category.passport1}}</p>
+          <p>&emsp;номер: {{category.passportNumber}}</p>
+          <p>&emsp;ким і коли виданий: {{category.passportInfo}}</p>
+          <p>9. Відношення до військової служби (призовник чи військовозабов'язаний):</p>
+          <p>&emsp;{{category.army}}</p>
+          <p>10. Військове звання: {{category.armyInfo}}</p>
+          <p>11. В кому РВК знаходиться на військовому обліку:</p>
+          <p>&emsp;{{category.armyInfo1}}</p>
+          <p>12. Контактний телефон {{category.telephone}}</p>
+          <p> Дата заповнення "___"________20___р &nbsp; &nbsp; &nbsp; Підпис ___________</p>
+          <!--             -->
+        </div>
+        <button
+          [printSectionId]="'print-section'+i"
+          ngxPrint
+          [useExistingCss]="true"
+          class="btn btn-secondary btn-lg btn-block">Download pdf
+        </button>
+
+        <!--      -->
+        <br>
+        <div class="card-content p12"
+             [id]="'print-section1'+i">
+          <div class="center">
+            <h5>Міністерство освіти і науки України</h5>
+            <h5>Державний вищий навчальний заклад</h5>
+            <h5>Національний лісотехнічний університет України</h5>
+          </div>
+          <h5>ОПИС ОСОБОВОЇ СПРАВИ №______________</h5>
+          <br>
+          <p>{{category.surname}} {{category.name}} {{category.surnames}}</p>
+          <p>Інститут {{category.institute}}</p>
+          <p>Спеціальнсть {{category.specialty}}</p>
+          <ol>
+            <li>Заява</li>
+            <li>Чотири фотокартки 3 х 4</li>
+            <li>Інформація про (диплом, атестат)</li>
+            <p>{{category.diplomInfo}}</p>
+            <li>Сертифікат УЦОЯО номер</li>
+            <p>{{category.certificateY}}</p>
+            <li>Копія ДПА про присвоєння реєстраційного номера обл.картки платників податків</li>
+            <p>{{category.DPA}}</p>
+          </ol>
+          <table class=" centered">
+            <thead>
+            <tr>
+              <th>Документи прийняті</th>
+              <th>Документи повернуті
+                у зв'язку із зверненням
+              </th>
+              <th>Документи переведенні на _________</th>
+              <th>Укомплектовано</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr>
+              <td>
+                <pre>дата      підпис</pre>
+              </td>
+              <td>
+                <pre>дата      підпис</pre>
+              </td>
+              <td>
+                <pre>дата      підпис</pre>
+              </td>
+              <td>
+                <pre>дата      підпис</pre>
+              </td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+            </tbody>
+          </table>
+          <br>
+          <br>
+          <p> Дата заповнення "___"________20___р &nbsp; &nbsp; &nbsp; Підпис ___________</p>
+        </div>
+        <button
+          [printSectionId]="'print-section1'+i"
+          ngxPrint
+          [useExistingCss]="true"
+          class="btn btn-secondary btn-lg btn-block">Download pdf
+        </button>
+        <!--      -->
+        <br>
+        <div class="card-content p12"
+             [id]="'print-section2'+i"
+        >
+          <div class="center">
+            <h5>Міністерство освіти і науки України</h5>
+            <h5>Державний вищий навчальний заклад</h5>
+            <h5>Національний лісотехнічний університет України</h5>
+          </div>
+          <h5>РОЗПИСКА №_____________________</h5>
+          <p>Про прийняття документів в інститут ___________________</p>
+          <p>Освітнього ступення______________________________________</p>
+          <p>За спеціальністю {{category.specialty}}</p>
+          <p>від гр._____________________________________________________</p>
+          <p>(прізвище,ім'я,по батькові)</p>
+          <br>
+          <h5>Прийнято документи :</h5>
+          <ol>
+            <li>Заява</li>
+            <li>Чотири фотокартки 3 х 4</li>
+            <li>Інформація про (диплом, атестат)</li>
+            <p>{{category.diplomInfo}}</p>
+            <li>Сертифікат УЦОЯО номер</li>
+            <p>{{category.certificateY}}</p>
+            <li>Копія ДПА про присвоєння реєстраційного номера обл.картки платників податків</li>
+            <p>{{category.DPA}}</p>
+          </ol>
+          <br>
+          <br>
+          <p>Абітурієнти ,які не вступили до навчального закладу ,
+            забов'язані забрати з Приймальної комісії документи до 01 жовтня 20__р
+          </p>
+          <p>Прийняв техсекретар Приймальної комісії___________________</p>
+          <p> Дата заповнення "___"________20___р &nbsp; &nbsp; &nbsp; Підпис ___________</p>
+        </div>
+        <button
+          [printSectionId]="'print-section2'+i"
+          ngxPrint
+          [useExistingCss]="true"
+          class="btn btn-secondary btn-lg btn-block">Download pdf
+        </button>
+        <!--     -->
+        <br>
+
+        <div
+          [id]="'print1section3'+i"
+          class="card-content p12">
+          <h5 class="center">Анкета</h5>
+          <p class="center">для виготовлення студенського квитка</p>
+
+          <p>Національний лісотехнічний університет України</p>
+          <p>1. Інститут {{category.institute}}</p>
+          <p>2. Спеціальність {{category.specialty}}</p>
+          <p>3. {{category.surname}} {{category.name}} {{category.surnames}}</p>
+          <p>4. Стать {{category.gender}}</p>
+          <p>5. {{category.birthday}}</p>
+          <p>6. Паспорт серія: {{category.passport1}}</p>
+          <p>&emsp;номер: {{category.passportNumber}}</p>
+          <p>&emsp;ким і коли виданий: {{category.passportInfo}}</p>
+          <p>7. Індифікаційний номер ДПА {{category.passportInfo}}</p>
+          <p>8. Контактний телефон {{category.telephone}}</p>
+          <p>9. Домашня адреса {{category.homeAddress}}</p>
+          <p>10. Іноземна мова, для подальшого вивчення {{category.language}}</p>
+          <p>11. Навчання {{category.finances}}</p>
+
+          <p style="margin-bottom: 10px"> Дата заповнення "___"________20___р &nbsp; &nbsp; &nbsp; Підпис абітурієнта
+            ___________</p>
+        </div>
+        <button
+          [printSectionId]="'print1section3'+i"
+          ngxPrint
+          [useExistingCss]="true"
+          class="btn btn-secondary btn-lg btn-block">Download pdf
+        </button>
+        <br>
+        <!--     -->
+      </div>
+    </div>
+  </div>
+
+  <ng-template #empty>
+    <div class="center">
+      Немає шаблонів
+    </div>
+  </ng-template>
+</div>
+<br>
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>

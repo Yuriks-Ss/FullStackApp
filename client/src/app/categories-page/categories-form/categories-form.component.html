@@ -1,0 +1,441 @@
+<div class="page-title">
+  <h4>
+    <a routerLink="/categories">Шаблони</a>
+    <i class="material-icons">keyboard_arrow_right</i>
+    {{isNew ? "ADD" : "edit"}} шаблон
+  </h4>
+  <span>
+            <button
+              *ngIf="!isNew"
+              class="btn btn-small red"
+              (click)="deleteCategory()"
+            >
+              <i class="material-icons">delete</i>
+            </button>
+          </span>
+</div>
+
+<div class="row">
+  <form class="col s12 l6" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="input-field">
+      <input
+        formControlName="name"
+        id="name"
+        type="text"
+        [ngClass]="{'invalid': form.get('name').invalid && form.get('name').touched}"
+      >
+      <label class="active" for="name">Ім'я</label>
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('name').invalid && form.get('name').touched"
+      >
+        <span *ngIf="form.get('name').errors['required']">
+          Це поле не може бути пустим
+        </span>
+      </span>
+    </div>
+    <!---->
+    <div class="input-field">
+      <input
+        formControlName="surname"
+        id="surname"
+        type="text"
+        [ngClass]="{'invalid': form.get('surname').invalid && form.get('surname').touched}"
+      >
+      <label class="active" for="surname">Прізвище</label>
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('surname').invalid && form.get('surname').touched"
+      >
+        <span *ngIf="form.get('surname').errors['required']">
+          Це поле не може бути пустим
+        </span>
+      </span>
+    </div>
+    <!---->
+    <div class="input-field">
+      <input
+        formControlName="surnames"
+        id="surnames"
+        type="text"
+        [ngClass]="{'invalid': form.get('surnames').invalid && form.get('surnames').touched}"
+      >
+      <label class="active" for="surnames">По батькові</label>
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('surnames').invalid && form.get('surnames').touched"
+      >
+        <span *ngIf="form.get('surnames').errors['required']">
+          Це поле не може бути пустим
+        </span>
+      </span>
+    </div>
+    <!--         -->
+    <span>Стать</span>
+
+    <p>
+      <label for="male">
+        <input id="male" type="radio" value="Чоловіча" name="answer2" formControlName="answer2"/>
+        <span>Чоловіча</span>
+      </label>
+    </p>
+    <p>
+      <label for="female">
+        <input id="female" type="radio" value="Жіноча" name="answer2" formControlName="answer2"/>
+        <span>Жіноча</span>
+      </label>
+    </p>
+
+
+      <!--         -->
+      <span>Інститут</span>
+      <p>
+        <label for="ilspgg">
+          <input id="ilspgg" type="radio" value="ЛСПГ" name="answer" formControlName="answer"/>
+          <span>ЛСПГ</span>
+        </label>
+      </p>
+      <p>
+        <label for="si">
+          <input id="si" type="radio" value="ІМАКІТ" name="answer" formControlName="answer"/>
+          <span>ІМАКІТ</span>
+        </label>
+      </p>
+      <p>
+        <label for="ti">
+          <input id="ti" type="radio" value="ДКТД" name="answer" formControlName="answer"/>
+          <span>ДКТД</span>
+        </label>
+      </p>
+      <p>
+        <label for="fi">
+          <input id="fi" type="radio" value="ЕЕМ" name="answer" formControlName="answer"/>
+          <span>ЕЕМ</span>
+        </label>
+      </p>
+    <br>
+      <!--         -->
+      <div class="input-field">
+        <input
+          formControlName="specialty"
+          id="specialty"
+          type="text"
+          [ngClass]="{'invalid': form.get('specialty').invalid && form.get('specialty').touched}"
+        >
+        <label class="active" for="specialty">Спеціальність</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('specialty').invalid && form.get('specialty').touched"
+        >
+        <span *ngIf="form.get('specialty').errors['specialty']">
+          Це поле не може бути пустим
+        </span>
+      </span>
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="birthday"
+          id="birthday"
+          type="text"
+          [ngClass]="{'invalid': form.get('birthday').invalid && form.get('birthday').touched}"
+        >
+        <label class="active" for="birthday">Дата народження</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('birthday').invalid && form.get('birthday').touched"
+        >
+        <span *ngIf="form.get('birthday').errors['required']">
+          Це поле не може бути пустим (число місяць рік)
+        </span>
+      </span>
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="passport1"
+          id="passport1"
+          type="text"
+        >
+        <label class="active" for="passport1">Паспорт серія</label>
+
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="passportNumber"
+          id="passportNumber"
+          type="text"
+          [ngClass]="{'invalid': form.get('passportNumber').invalid && form.get('passportNumber').touched}"
+        >
+        <label class="active" for="passportNumber">Номер паспорта</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('passportNumber').invalid && form.get('passportNumber').touched"
+        >
+        <span *ngIf="form.get('passportNumber').errors['required']">
+          Це поле не може бути пустим
+        </span>
+      </span>
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="passportInfo"
+          id="passportInfo"
+          type="text"
+          [ngClass]="{'invalid': form.get('passportInfo').invalid && form.get('passportInfo').touched}"
+        >
+        <label class="active" for="passportInfo">Ким виданий ,дата видачі</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('passportInfo').invalid && form.get('passportInfo').touched"
+        >
+        <span *ngIf="form.get('passportInfo').errors['required']">
+          Це поле не може бути пустим
+        </span>
+      </span>
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="DPA"
+          id="DPA"
+          type="text"
+          [ngClass]="{'invalid': form.get('DPA').invalid && form.get('DPA').touched}"
+        >
+        <label class="active" for="DPA">Індифікаційний номер ДПА</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('DPA').invalid && form.get('DPA').touched"
+        >
+        <span *ngIf="form.get('DPA').errors['required']">
+          Це поле не може бути пустим
+        </span>
+      </span>
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="telephone"
+          id="telephone"
+          type="text"
+          [ngClass]="{'invalid': form.get('telephone').invalid && form.get('telephone').touched}"
+        >
+        <label class="active" for="telephone">Контактний телефон</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('telephone').invalid && form.get('telephone').touched"
+        >
+        <span *ngIf="form.get('telephone').errors['required']">
+          Це поле не може бути пустим
+        </span>
+      </span>
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="homeAddress"
+          id="homeAddress"
+          type="text"
+          [ngClass]="{'invalid': form.get('homeAddress').invalid && form.get('homeAddress').touched}"
+        >
+        <label class="active" for="homeAddress">Домашня адреса (індекс, обл., район, місто(село), вулиця, будинок, квартира)</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('homeAddress').invalid && form.get('homeAddress').touched"
+        >
+        <span *ngIf="form.get('homeAddress').errors['required']">
+          Це поле не може бути пустим
+        </span>
+      </span>
+      </div>
+      <!--        -->
+      <span>Іноземна мова для подальшого вивчення</span>
+      <p>
+        <label for="engl">
+          <input id="engl" type="radio" value="Анлійська" name="answer3" formControlName="answer3"/>
+          <span>Анлійська</span>
+        </label>
+      </p>
+      <p>
+        <label for="germ">
+          <input id="germ" type="radio" value="Німецька" name="answer3" formControlName="answer3"/>
+          <span>Німецька</span>
+        </label>
+      </p>
+      <p>
+        <label for="fran">
+          <input id="fran" type="radio" value="Французька" name="answer3" formControlName="answer3"/>
+          <span>Французька</span>
+        </label>
+      </p>
+
+      <!--        -->
+      <span>Навчання</span>
+      <p>
+        <label for="pzo">
+          <input id="pzo" type="radio" value="на базі повної загальної середньої освіти" name="answer4"
+                 formControlName="answer4"/>
+          <span>на базі повної загальної середньої освіти</span>
+        </label>
+      </p>
+      <p>
+        <label for="OKR">
+          <input id="OKR" type="radio" value="на базі ОКР Молодший спеціаліст" name="answer4"
+                 formControlName="answer4"/>
+          <span>на базі ОКР "Молодший спеціаліст"</span>
+        </label>
+      </p>
+      <!--            -->
+      <span>Джерело фінансування</span>
+      <p>
+        <label for="drj">
+          <input id="drj" type="radio" value="держбюджет" name="answer5" formControlName="answer5"/>
+          <span>держбюджет</span>
+        </label>
+      </p>
+      <p>
+        <label for="kon">
+          <input id="kon" type="radio" value="контракт" name="answer5" formControlName="answer5"/>
+          <span>контракт</span>
+        </label>
+      </p>
+
+      <!--            -->
+      <div class="input-field">
+        <input
+          formControlName="zaklad"
+          id="zaklad"
+          type="text"
+          [ngClass]="{'invalid': form.get('zaklad').invalid && form.get('zaklad').touched}"
+        >
+        <label class="active" for="zaklad">Освіта (найменування навчального закладу і рік закінчення)</label>
+        <span
+          class="helper-text red-text"
+          *ngIf="form.get('zaklad').invalid && form.get('zaklad').touched"
+        >
+        <span *ngIf="form.get('zaklad').errors['required']">
+          Це поле не може бути пустим
+        </span>
+      </span>
+      </div>
+<!--    -->
+    <div class="input-field">
+      <input
+        formControlName="diplomInfo"
+        id="diplomInfo"
+        type="text"
+        [ngClass]="{'invalid': form.get('diplomInfo').invalid && form.get('diplomInfo').touched}"
+      >
+      <label class="active" for="diplomInfo">Атестат, диплом (номер, дата, ким виданий)</label>
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('diplomInfo').invalid && form.get('diplomInfo').touched"
+      >
+        <span *ngIf="form.get('diplomInfo').errors['required']">
+          Це поле не може бути пустим
+        </span>
+      </span>
+    </div>
+<!--    -->
+    <div class="input-field">
+      <input
+        formControlName="certificateY"
+        id="certificateY"
+        type="text"
+        [ngClass]="{'invalid': form.get('certificateY').invalid && form.get('certificateY').touched}"
+      >
+      <label class="active" for="certificateY">Сертифікат УЦОЯО номер</label>
+      <span
+        class="helper-text red-text"
+        *ngIf="form.get('certificateY').invalid && form.get('certificateY').touched"
+      >
+        <span *ngIf="form.get('certificateY').errors['required']">
+          Це поле не може бути пустим
+        </span>
+      </span>
+    </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="wifeInfo"
+          id="wifeInfo"
+          type="text"
+        >
+        <label class="active" for="wifeInfo">Ім'я ,по батькові і рік народження дружини</label>
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="fatherInfo"
+          id="fatherInfo"
+          type="text"
+        >
+        <label class="active" for="fatherInfo">Ім'я ,по батькові і рік народження батька</label>
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="matherInfo"
+          id="matherInfo"
+          type="text"
+        >
+        <label class="active" for="matherInfo">Ім'я ,по батькові і рік народження матері</label>
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="addressParents"
+          id="addressParents"
+          type="text"
+        >
+        <label class="active" for="addressParents">Місце проживання батьків</label>
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="army"
+          id="army"
+          type="text"
+        >
+        <label class="active" for="army">Відношення до військовії служби(призовник чи військовозабов'язаний)</label>
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="armyInfo"
+          id="armyInfo"
+          type="text"
+        >
+        <label class="active" for="armyInfo">Військове звання</label>
+      </div>
+      <!--    -->
+      <div class="input-field">
+        <input
+          formControlName="armyInfo1"
+          id="armyInfo1"
+          type="text"
+        >
+        <label class="active" for="armyInfo1">В якому РВК знаходиться на військовому обліку</label>
+      </div>
+      <!--    -->
+
+      <div>
+        <button
+          type="submit"
+          [disabled]="form.invalid || form.disabled"
+          class="waves-effect waves-light btn"
+        >
+          Зберегти зміни
+        </button>
+      </div>
+  </form>
+
+  <!--  <div class="col s12 l4 center">-->
+  <!--    <img class="responsive-img" style="height: 200px" src="cake.jpg">-->
+  <!--  </div>-->
+</div>
+
+
+

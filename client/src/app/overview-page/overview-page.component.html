@@ -1,0 +1,29 @@
+
+<div class="center">
+  <h4>Вітаємо Вас у нашому додатку</h4>
+  <h5>За його допомогою ви можете швидко пройти етап приймальної комісії</h5>
+</div>
+<p></p>
+<div class="carousel">
+  <a class="carousel-item" href="#{{[i]}}!" *ngFor="let item of items;let i = index">
+    <img src={{item}}/>
+  </a>
+</div>
+<br>
+<div class="row center">
+  <div class="col s12 "><h5>Все що вам необхідно це:</h5></div>
+  <div class="col s12 m6 l3"><p>1. Достовірно внести інформацію в форму шаблону</p></div>
+  <div class="col s12 m6 l3"><p>2. Роздрукувати ваші шаблони</p></div>
+  <div class="col s12 m6 l3"><p>3. З'явитися з оригіналами документів для звірення інформації</p></div>
+  <div class="col s12 m6 l3"><p>4. Прийти з документами на вступний іспит і успішно його скласти</p></div>
+</div>
+
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+<ng-template #empty>
+  <div class="center">
+
+  </div>
+</ng-template>

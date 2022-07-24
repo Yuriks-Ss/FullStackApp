@@ -1,0 +1,14 @@
+/*header, main, footer {*/
+/*  padding-left: 300px;*/
+/*}*/
+
+@media only screen and (max-width : 992px) {
+  header, main, footer,nav {
+    padding: 0;
+    width: 100%;
+  }
+}
+body > app-root > app-site-layout > div > ul{
+
+  width: 50px!important;
+}
